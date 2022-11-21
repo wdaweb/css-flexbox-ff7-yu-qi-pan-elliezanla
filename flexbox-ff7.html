@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      font-family: "微軟正黑體";
+    }
+
+    body {
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background: url(/images/bg-full.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: brightness(60%);
+    }
+
+
+    h1 {
+      font-size: 52px;
+    }
+
+    p {
+      font-size: 2rem;
+    }
+
+    #container {
+      width: 1920px;
+      height: 943px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: .5px solid rgb(113, 113, 113);
+    }
+
+    .row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .col1 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 943px;
+      width: 960px;
+      overflow: hidden;
+      z-index: 1000;
+      background: url(./images/main.jpg);
+      background-repeat: no-repeat;
+      background-position: -120px;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+    }
+
+    .col2 {
+      width: calc(1920px / 2);
+      height: calc(943px / 2);
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1000;
+      background: lightgray;
+    }
+
+    .col2 img {
+      position: absolute;
+      right: 3%;
+      bottom: 0;
+      width: 40%;
+    }
+
+    .col3 {
+      width: calc(1920px / 2);
+      height: calc(943px / 2);
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background: black;
+      z-index: 1000;
+      color: white;
+    }
+
+    .col3 img {
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      width: 40%;
+    }
+
+    .bd-filter {
+      backdrop-filter: brightness(60%);
+    }
+
+    .card1 {
+      height: 943px;
+      width: 960px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 100px;
+      text-align: center;
+    }
+
+    .card1 img {
+      width: 300px;
+    }
+
+    .card2 {
+      position: absolute;
+      left: 5%;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: calc(960px / 1.7);
+    }
+
+    .card3 {
+      position: absolute;
+      right: 1%;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: calc(960px / 1.7);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container">
+    <div class="row">
+      <div class="col1 ">
+        <div class="card1 bd-filter">
+          <img src="./images/ps4-ff7.png">
+          <h1>AVAILABLE NOW</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id necessitatibus quis alias tempore perferendis
+            illum, voluptate facere atque dignissimos asperiores quae modi facilis odio, ut dolore provident aliquam
+            sapiente
+          </p>
+        </div>
+      </div>
+      <div class="col2">
+        <img src="./images/cloud.png">
+        <div class="card2">
+          <h1>Cloud</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id necessitatibus quis alias tempore perferendis
+            illumapiv
+          </p>
+        </div>
+      </div>
+      <div class="col3">
+        <img src="./images/tifa.png">
+        <div class="card3">
+          <h1>Tifa</h1>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Id necessitatibus quis alias tempore perferendis
+            illum
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

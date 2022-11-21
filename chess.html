@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作業_棋盤</title>
+  <style>
+    /* basic-setting */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "標楷體";
+    }
+
+    /* 文字 */
+    .text {
+      writing-mode: vertical-lr;
+      font-size: 3rem;
+      margin: 0 40px;
+    }
+
+    #container {
+      width: 960px;
+      height: 1000px;
+      border: 1px solid #000;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      align-items: center;
+      padding: 40px 78px;
+      position: relative;
+    }
+
+    .grid,
+    .grid4,
+    .grid52 {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      position: relative;
+    }
+
+    /* 楚河漢界 */
+    .grid00 {
+      width: 800px;
+      height: 100px;
+      border: 1px solid #000;
+      padding: 0 145px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    span {
+      font-size: 3.5rem;
+    }
+
+    /* 棋盤斜線 */
+    .grid4::before,
+    .grid52::before {
+      width: 282.84px;
+      height: 141.24px;
+      content: "";
+      position: absolute;
+      border-top: 1px solid #000;
+      rotate: 315deg;
+      top: 78px;
+      left: 7px;
+      z-index: 1000;
+    }
+
+    .grid4::after,
+    .grid52::after {
+      width: 282.84px;
+      height: 141.42px;
+      content: "";
+      position: absolute;
+      border-top: 1px solid #000;
+      rotate: 45deg;
+      top: 78px;
+      left: -92px;
+    }
+
+    /* 隱形容器 */
+    #check {
+      width: 900px;
+      height: 980px;
+      display: flex;
+      align-content: center;
+      align-items: center;
+      justify-content: space-between;
+      flex-direction: column;
+      position: absolute;
+      flex-wrap: wrap;
+      margin: auto;
+    }
+
+    /* 每一顆棋 */
+    #check .piece {
+      width: 75px;
+      height: 75px;
+      background: white;
+      border: 1px solid #000;
+      border-radius: 50%;
+      z-index: 10000;
+      text-align: center;
+      font-size: 52px;
+      line-height: 75px;
+    }
+
+    .text-red {
+      color: red;
+    }
+
+    .display-none {
+      display: none;
+    }
+
+    /* 每一排的共同設定 */
+    #check .row-basic {
+      width: 900px;
+      height: 75px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0 20px 0 10px;
+    }
+
+    /* 每一排棋的位置 */
+    #check .row3 {
+      position: absolute;
+      top: 300px;
+    }
+
+    #check .row4 {
+      position: absolute;
+      top: 600px;
+    }
+
+    #check .row2 {
+      padding: 0 113px;
+      position: absolute;
+      top: 200px;
+    }
+
+    #check .row5 {
+      padding: 0 113px;
+      position: absolute;
+      top: 700px;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="text">棋盤裡，車無輪，馬無韁，叫聲將軍堤防堤防</p>
+  <!-- 容器(棋盤) -->
+  <div id="container">
+    <!-- 第一排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid4"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <!-- 第二排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <!-- 第三排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <!-- 第四排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+
+    <!-- 楚河漢界 -->
+    <div class="grid00">
+      <span>楚河</span>
+      <span>漢界</span>
+    </div>
+    <!-- 第五排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <!-- 第六排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <!-- 第七排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid52"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <!-- 第八排 -->
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+
+  </div>
+
+  <!-- 棋子 -->
+  <div id="check">
+    <!-- 第一排 -->
+    <div class="row-basic">
+      <div class="piece">車</div>
+      <div class="piece">馬</div>
+      <div class="piece">象</div>
+      <div class="piece">士</div>
+      <div class="piece">將</div>
+      <div class="piece">士</div>
+      <div class="piece">象</div>
+      <div class="piece">馬</div>
+      <div class="piece">車</div>
+    </div>
+    <!-- 第二排 -->
+    <div class="row-basic row2">
+      <div class="piece display-none"></div>
+      <div class="piece">包</div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece">包</div>
+      <div class="piece display-none"></div>
+    </div>
+
+    <!-- 第三排 -->
+    <div class="row-basic row3">
+      <div class="piece">卒</div>
+      <div class="piece display-none"></div>
+      <div class="piece">卒</div>
+      <div class="piece display-none"></div>
+      <div class="piece">卒</div>
+      <div class="piece display-none"></div>
+      <div class="piece">卒</div>
+      <div class="piece display-none"></div>
+      <div class="piece">卒</div>
+
+    </div>
+
+    <!-- 第四排 -->
+    <div class="row-basic row4 text-red">
+      <div class="piece">兵</div>
+      <div class="piece display-none"></div>
+      <div class="piece">兵</div>
+      <div class="piece display-none"></div>
+      <div class="piece">兵</div>
+      <div class="piece display-none"></div>
+      <div class="piece">兵</div>
+      <div class="piece display-none"></div>
+      <div class="piece">兵</div>
+    </div>
+
+    <!-- 第五排 -->
+    <div class="row-basic row5 text-red">
+      <div class="piece display-none"></div>
+      <div class="piece">炮</div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece display-none"></div>
+      <div class="piece">炮</div>
+      <div class="piece display-none"></div>
+    </div>
+
+    <!-- 第六排 -->
+    <div class="row-basic text-red">
+      <div class="piece">俥</div>
+      <div class="piece">馬</div>
+      <div class="piece">相</div>
+      <div class="piece">仕</div>
+      <div class="piece">帥</div>
+      <div class="piece">仕</div>
+      <div class="piece">相</div>
+      <div class="piece">馬</div>
+      <div class="piece">俥</div>
+    </div>
+  </div>
+  <p class="text">圖畫裡，龍不吟，虎不嘯，小小書僮可笑可笑</p>
+</body>
+
+</html>
